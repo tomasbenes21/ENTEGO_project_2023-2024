@@ -1,2 +1,2 @@
 # ENTEGO_project_2023-2024
-Projekt pro zízkání certifikátu. SQL skript generující výslednou tabulku, popis mezivýsledků (průvodní listinu) a informace o výstupních datech (například kde chybí hodnoty apod.).
+Projekt pro získání certifikátu. SQL skript generující výsledné tabulky, informace o výstupních datech a průvodní listinu.
