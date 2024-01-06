@@ -14,23 +14,23 @@ SELECT
 	t1.payroll_value
 FROM (
 	SELECT
-	ttbpspf.czechia_price_year AS 'year',
+	ttbpspf.year AS 'year',
 	round(avg(ttbpspf.unit_value),2) AS unit_value,
 	round(avg(ttbpspf.payroll_value),2) AS payroll_value
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE ttbpspf.industry_code IS NULL
+	WHERE ttbpspf.industry_name IS NULL
 		AND ttbpspf.value_name = 'Průměrná hrubá mzda na zaměstnance'
-	GROUP BY ttbpspf.czechia_price_year
+	GROUP BY ttbpspf.year
 	) t1
 RIGHT JOIN (	
 	SELECT
-	ttbpspf.czechia_price_year AS 'year',
+	ttbpspf.year AS 'year',
 	round(avg(ttbpspf.unit_value),2) AS unit_value,
 	round(avg(ttbpspf.payroll_value),2) AS payroll_value
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE ttbpspf.industry_code IS NULL
+	WHERE ttbpspf.industry_name IS NULL
 		AND ttbpspf.value_name = 'Průměrná hrubá mzda na zaměstnance'
-	GROUP BY ttbpspf.czechia_price_year
+	GROUP BY ttbpspf.year
 	) t2
 ON t1.YEAR = t2.YEAR + 1
 ) t3

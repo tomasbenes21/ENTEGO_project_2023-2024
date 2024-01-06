@@ -20,7 +20,7 @@ FROM (
 	avg(unit_value) AS price_2006,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2006
+	WHERE year = 2006
 	GROUP BY category_name,price_unit
 ) t06
 LEFT JOIN (	
@@ -29,7 +29,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2007,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2007
+	WHERE year = 2007
 	GROUP BY category_name,price_unit
 ) t07
 ON t06.category_name = t07.category_name
@@ -39,7 +39,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2008,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2008
+	WHERE year = 2008
 	GROUP BY category_name,price_unit
 ) t08
 ON t06.category_name = t08.category_name
@@ -49,7 +49,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2009,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2009
+	WHERE year = 2009
 	GROUP BY category_name,price_unit
 ) t09
 ON t06.category_name = t09.category_name
@@ -59,7 +59,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2010,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2010
+	WHERE year = 2010
 	GROUP BY category_name,price_unit
 ) t10
 ON t06.category_name = t10.category_name
@@ -69,7 +69,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2011,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2011
+	WHERE year = 2011
 	GROUP BY category_name,price_unit
 ) t11
 ON t06.category_name = t11.category_name
@@ -79,7 +79,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2012,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2012
+	WHERE year = 2012
 	GROUP BY category_name,price_unit
 ) t12
 ON t06.category_name = t12.category_name
@@ -89,7 +89,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2013,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2013
+	WHERE year = 2013
 	GROUP BY category_name,price_unit
 ) t13
 ON t06.category_name = t13.category_name
@@ -99,7 +99,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2014,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2014
+	WHERE year = 2014
 	GROUP BY category_name,price_unit
 ) t14
 ON t06.category_name = t14.category_name
@@ -109,7 +109,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2015,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2015
+	WHERE year = 2015
 	GROUP BY category_name,price_unit
 ) t15
 ON t06.category_name = t15.category_name
@@ -119,7 +119,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2016,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2016
+	WHERE year = 2016
 	GROUP BY category_name,price_unit
 ) t16
 ON t06.category_name = t16.category_name
@@ -129,7 +129,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2017,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2017
+	WHERE year = 2017
 	GROUP BY category_name,price_unit
 ) t17
 ON t06.category_name = t17.category_name
@@ -139,7 +139,7 @@ LEFT JOIN (
 	avg(unit_value) AS price_2018,
 	price_unit
 	FROM t_tomas_benes_project_sql_primary_final ttbpspf
-	WHERE czechia_price_year = 2018
+	WHERE year = 2018
 	GROUP BY category_name,price_unit
 ) t18
 ON t06.category_name = t18.category_name
