@@ -6,9 +6,9 @@ SELECT
 	table2.year,
 	avg (table2.payroll_value) AS avg_payroll_value,
 	CASE
-	WHEN avg (table1.payroll_value) < avg (table2.payroll_value) THEN '↑'
-	ELSE '↓'
-END AS payroll_growth 
+		WHEN avg (table1.payroll_value) < avg (table2.payroll_value) THEN '↑'
+		ELSE '↓'
+	END AS payroll_growth 
 FROM (
 	SELECT *
 	FROM t_tomas_benes_project_sql_primary_final ttbpspft
