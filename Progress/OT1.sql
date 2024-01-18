@@ -1,42 +1,26 @@
-SELECT 
-y06.industry_name,
-y06.total_value AS value_2006,
-y12.total_value AS value_2012,
-y18.total_value AS value_2018,
-CASE
-	WHEN y06.total_value < y18.total_value THEN 'yes'
-	ELSE 'no'
-END AS is_ascending
+SELECT
+	table1.industry_name,
+	table1.year AS previous_year,
+	avg (table1.payroll_value) AS avg_payroll_value_previous_year,
+	table2.year,
+	avg (table2.payroll_value) AS avg_payroll_value,
+	CASE
+	WHEN avg (table1.payroll_value) < avg (table2.payroll_value) THEN '↑'
+	ELSE '↓'
+END AS payroll_growth 
 FROM (
-	SELECT 
-	industry_name,
-	year,
-	round(payroll_value,0) AS total_value
-FROM t_tomas_benes_project_sql_primary_final ttbpspf
-WHERE ttbpspf.value_name = 'Průměrná hrubá mzda na zaměstnance'
-	AND ttbpspf.industry_name IS NOT NULL
-	AND year = 2006
-GROUP BY industry_name, year
-) y06
-LEFT JOIN (
-	SELECT industry_name,
-	year,
-	round(payroll_value,0) AS total_value
-FROM t_tomas_benes_project_sql_primary_final ttbpspf
-WHERE ttbpspf.value_name = 'Průměrná hrubá mzda na zaměstnance'
-	AND ttbpspf.industry_name IS NOT NULL
-	AND year = 2012
-GROUP BY industry_name, year
-) y12
-ON y06.industry_name = y12.industry_name
-LEFT JOIN (
-	SELECT industry_name,
-	year,
-	round(payroll_value,0) AS total_value
-FROM t_tomas_benes_project_sql_primary_final ttbpspf
-WHERE ttbpspf.value_name = 'Průměrná hrubá mzda na zaměstnance'
-	AND ttbpspf.industry_name IS NOT NULL
-	AND year = 2018
-GROUP BY industry_name, year
-) y18
-ON y06.industry_name = y18.industry_name;
+	SELECT *
+	FROM t_tomas_benes_project_sql_primary_final ttbpspft
+	WHERE value_name = 'Průměrná hrubá mzda na zaměstnance'
+		AND industry_name IS NOT NULL
+ ) table1
+ JOIN (
+	SELECT *
+	FROM t_tomas_benes_project_sql_primary_final ttbpspft
+	WHERE value_name = 'Průměrná hrubá mzda na zaměstnance'
+		AND industry_name IS NOT NULL
+ ) table2
+	 ON table1.industry_name = table2.industry_name
+	 AND table1.year = table2.YEAR -1
+GROUP BY 	table1.industry_name, table1.year, table2.YEAR
+HAVING payroll_growth = '↓'
