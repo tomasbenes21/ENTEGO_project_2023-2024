@@ -1,10 +1,10 @@
 SELECT
 	ttbpssf.YEAR AS 'year',
 	ttbpssf.GDP_growth_rate,
-	-- ttbpssf.value_growth_rate,
-	-- ttbpssf.salary_growth_rate,
-	-- ttbpssf2.value_growth_rate AS value_growth_rate_following_year,
-	-- ttbpssf2.salary_growth_rate AS salary_growth_rate_following_year,
+	ttbpssf.salary_growth_rate,
+	ttbpssf2.salary_growth_rate AS salary_growth_rate_following_year,
+	ttbpssf.value_growth_rate,
+	ttbpssf2.value_growth_rate AS value_growth_rate_following_year,
 	CASE 
 		WHEN ttbpssf.GDP_growth_rate > 5 THEN '↑↑↑↑↑↑'
 		WHEN ttbpssf.GDP_growth_rate > 4 AND ttbpssf.GDP_growth_rate <= 5 THEN '↑↑↑↑↑'
