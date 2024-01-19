@@ -26,7 +26,7 @@ SELECT
 		CASE 
 		WHEN (ttbpssf2.salary_growth_rate > 6.66) OR (ttbpssf2.value_growth_rate > 6.66) THEN '↑↑↑'
 		WHEN (ttbpssf2.salary_growth_rate > 3.33 AND ttbpssf2.salary_growth_rate <= 6.66) OR (ttbpssf2.value_growth_rate > 3.33 AND ttbpssf2.value_growth_rate <= 6.66) THEN '↑↑'
-				WHEN (ttbpssf2.salary_growth_rate > 0 AND ttbpssf2.salary_growth_rate <= 3.33) OR (ttbpssf2.value_growth_rate > 0 AND ttbpssf2.value_growth_rate <= 3.33) THEN '↑'
+		WHEN (ttbpssf2.salary_growth_rate > 0 AND ttbpssf2.salary_growth_rate <= 3.33) OR (ttbpssf2.value_growth_rate > 0 AND ttbpssf2.value_growth_rate <= 3.33) THEN '↑'
 		WHEN (ttbpssf2.salary_growth_rate < 0 AND ttbpssf2.salary_growth_rate >= -3.33) OR (ttbpssf2.value_growth_rate < 0 AND ttbpssf2.value_growth_rate >= -3.33) THEN '↓'
 		WHEN (ttbpssf2.salary_growth_rate < 3.33 AND ttbpssf2.salary_growth_rate >= -6.66) OR (ttbpssf2.value_growth_rate < 3.33 AND ttbpssf2.value_growth_rate >= -6.66) THEN '↓↓'
 		WHEN (ttbpssf2.salary_growth_rate < 6.66) OR (ttbpssf2.value_growth_rate > -6.66) THEN '↓↓↓'
@@ -35,3 +35,6 @@ SELECT
 FROM t_tomas_benes_project_sql_secondary_final ttbpssf
 JOIN t_tomas_benes_project_sql_secondary_final ttbpssf2
 ON ttbpssf2.YEAR = ttbpssf.YEAR + 1
+
+SELECT *
+FROM 

@@ -3,7 +3,7 @@ SELECT
 	category_name,
 	payroll_value,
 	YEAR AS year,
-	round (payroll_value / unit_value, 2) AS possibility_of_purchase
+	ROUND (payroll_value / unit_value, 2) AS possibility_of_purchase
 FROM t_tomas_benes_project_sql_primary_final ttbpspf
 WHERE year IN (2006, 2018)
 	AND (category_name LIKE 'mléko%'

@@ -1,11 +1,11 @@
 SELECT
 	table1.industry_name,
 	table1.year AS previous_year,
-	avg (table1.payroll_value) AS avg_payroll_value_previous_year,
+	AVG (table1.payroll_value) AS avg_payroll_value_previous_year,
 	table2.year,
-	avg (table2.payroll_value) AS avg_payroll_value,
+	AVG (table2.payroll_value) AS avg_payroll_value,
 	CASE
-	WHEN avg (table1.payroll_value) < avg (table2.payroll_value) THEN '↑'
+	WHEN AVG (table1.payroll_value) < AVG (table2.payroll_value) THEN '↑'
 	ELSE '↓'
 END AS payroll_growth 
 FROM (

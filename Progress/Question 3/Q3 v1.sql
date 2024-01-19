@@ -1,9 +1,9 @@
 SELECT
 	price.category_name,
-	price.YEAR AS year,
+	price.YEAR,
 	price.unit_value,
 	price2.unit_value AS unit_value_previous_year,
-	ROUND (IF ((price.unit_value - price2.unit_value) / price2.unit_value > 0, (price.unit_value - price2.unit_value) / price2.unit_value + 1, (price.unit_value - price2.unit_value) / price2.unit_value), 2) AS 'difference_%'
+	ROUND (((price.unit_value - price2.unit_value) / price2.unit_value) * 100, 2)  AS difference
 FROM (
 	SELECT 
 		ttbpspf.unit_value,
@@ -23,7 +23,6 @@ JOIN (
 	ON price.year = price2.YEAR + 12
 	AND price.category_name = price2.category_name
 	AND price.YEAR = 2018
-	ORDER BY (price.unit_value - price2.unit_value) / price2.unit_value;
-	
+ORDER BY (price.unit_value - price2.unit_value) / price2.unit_value;
 	
 
