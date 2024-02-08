@@ -1,4 +1,3 @@
-
 SELECT
 	table1.industry_name,
 	table1.year AS previous_year,
@@ -21,7 +20,7 @@ FROM (
 	WHERE value_name = 'Průměrná hrubá mzda na zaměstnance'
 		AND industry_name IS NOT NULL
  ) table2
-	 ON table1.industry_name = table2.industry_name
-	 AND table1.year = table2.YEAR -1
-GROUP BY 	table1.industry_name, table1.year, table2.YEAR
-HAVING payroll_growth = '↓'
+	ON table1.industry_name = table2.industry_name
+	 AND table1.year = table2.year -1
+GROUP BY 	table1.industry_name, table1.year, table2.year
+HAVING payroll_growth = '↓';
