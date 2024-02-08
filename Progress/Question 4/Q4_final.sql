@@ -30,17 +30,18 @@ LEFT JOIN payroll
 	ON price.year = payroll.year
 )
 SELECT
-	joined.YEAR,
+	joined.year,
 	ROUND (joined.price_value, 1) AS price_value,
 	ROUND(joined.payroll_value, 0) AS payroll_value,
 	ROUND(joined2.price_value,1) AS previous_price_value,
 	ROUND(joined2.payroll_value, 0) AS previous_payroll_value,
-	CONCAT( ROUND((joined.price_value - joined2.price_value) / joined2.price_value *100, 1),' %') AS price_difference,
-	CONCAT( ROUND((joined.payroll_value - joined2.payroll_value) / joined2.payroll_value *100, 1),' %') AS payroll_difference,
-	CONCAT( ROUND (((joined.price_value - joined2.price_value) / joined2.price_value * 100) - ((joined.payroll_value - joined2.payroll_value) / joined2.payroll_value * 100), 1),' %') AS 'price/payroll_difference'
+	ROUND((joined.price_value - joined2.price_value) / joined2.price_value *100, 1) AS 'price_difference_%',
+	ROUND((joined.payroll_value - joined2.payroll_value) / joined2.payroll_value *100, 1) AS 'payroll_difference_%',
+	ROUND (((joined.price_value - joined2.price_value) / joined2.price_value * 100) - ((joined.payroll_value - joined2.payroll_value) / joined2.payroll_value * 100), 1) AS 'price/payroll_difference_%'
 FROM joined
 JOIN (
 	SELECT *
 	FROM joined
 	) joined2
 ON joined.YEAR = joined2.YEAR +1
+ORDER BY ((joined.price_value - joined2.price_value) / joined2.price_value * 100) - ((joined.payroll_value - joined2.payroll_value) / joined2.payroll_value * 100) DESC
